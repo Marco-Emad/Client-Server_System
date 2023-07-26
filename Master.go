@@ -41,24 +41,7 @@ type Response struct {
 	SlavePort int    `json:"slave_port"`
 }
 
-func handleConnection(conn net.Conn, slaves []string) {
-	// // Read client request
-	// decoder := json.NewDecoder(conn)
-	// var req Request
-	// if err := decoder.Decode(&req); err != nil {
-	// 	log.Println("error decoding request:", err)
-	// 	conn.Close()
-	// 	return
-	// }
-
-	// // Determine which slave node has the requested chunk
-	// chunkData, ok := chunks[req.ChunkIndex]
-	// if !ok {
-	// 	log.Println("invalid chunk index:", req.ChunkIndex)
-	// 	conn.Close()
-	// 	return
-	// }
-	// slaveIndex := req.ChunkIndex % 2 // distribute chunks evenly to two slave nodes
+func handleConnection(conn net.Conn, slaves []string) {	
 	numSlaves := 3
 	// Return IP and port number of slave node
 	for i := 0; i < numSlaves; i++ {
@@ -121,20 +104,7 @@ func distributeFile(slaves []string) {
 			fmt.Println("Error sending data to slave:", err)
 			return
 		}
-		fmt.Println("Send successfully")
-		// time.Sleep(1 * time.Second)
-		// // Wait for acknowledgement from the slave node
-		// buf := make([]byte, 1024)
-		// n, err := conn.Read(buf)
-		// if err != nil {
-		// 	// handle error
-		// 	panic(err)
-		// }
-		// msg := string(buf[:n])
-
-		// if msg == "ok" {
-		// 	fmt.Println("Received acknowledgement from slave:", string(msg))
-		// }
+		fmt.Println("Send successfully")		
 	}
 
 	fmt.Println("File distributed to slave nodes.")

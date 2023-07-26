@@ -40,14 +40,7 @@ func main() {
 	if err != nil {
 		// handle error
 		panic(err)
-	}
-
-	// --Send a string to the server
-	// message := "ok"
-	// _, err = conn.Write([]byte(message))
-	// if err != nil {
-	// 	panic(err)
-	// }
+	}	
 
 	fmt.Println("file has been received successfully")
 
@@ -88,56 +81,5 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("file sent successfully to Client")
-
-	/////////////////////////////
-	// Once the file is received, you can start serving the file to a client by creating a TCP listener and accepting incoming connections
-	// 	listener, err = net.Listen("tcp", ":8090")
-	// 	if err != nil {
-	// 		// handle error
-	// 		panic(err)
-	// 	}
-	// 	defer listener.Close()
-
-	// 	//fmt.Println("Waiting for clients to connect...")
-
-	// 	for {
-	// 		fmt.Println("Waiting for clients to connect...")
-	// 		conn, err := listener.Accept()
-	// 		if err != nil {
-	// 			// handle error
-	// 			panic(err)
-	// 		}
-	// 		fmt.Println("Client connected")
-
-	// 		// Read the message from the slave
-	// 		buf := make([]byte, 1024)
-	// 		n, err := conn.Read(buf)
-	// 		if err != nil {
-	// 			// handle error
-	// 			panic(err)
-	// 		}
-	// 		msg := string(buf[:n])
-
-	// 		if msg == "send_file" {
-	// 			// Open the file to be sent
-	// 			file1, err := os.Open("received-file.txt")
-	// 			if err != nil {
-	// 				// handle error
-	// 				panic(err)
-	// 			}
-	// 			defer file1.Close()
-
-	// 			// Send the file to the slave
-	// 			_, err = io.Copy(conn, file1)
-	// 			if err != nil {
-	// 				// handle error
-	// 				panic(err)
-	// 			}
-
-	// 			fmt.Println("File sent to Client")
-	// 		}
-
-	// 		conn.Close()
-	// 	}
+	fmt.Println("file sent successfully to Client")	
 }
